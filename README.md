@@ -23,7 +23,7 @@ By using this tool, students gain valuable insights into the **relationship betw
 
 The tool can be accessed through the following link
 
-[🔗](https://iiha7-sees-502-interactive--interactive-educational-tool-6z3qae.streamlit.app/)
+[SEES 502 Interactive Educational Tool 🔗](https://iiha7-sees-502-interactive--interactive-educational-tool-6z3qae.streamlit.app/)
 
 # Contact Information
 
