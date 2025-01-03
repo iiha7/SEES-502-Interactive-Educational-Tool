@@ -19,6 +19,11 @@ By using this tool, students gain valuable insights into the **relationship betw
 
 **Data** is obtained from the **Our World in Data** organization [🔗](https://ourworldindata.org/)
 
+# How to access the tool
+
+The tool can be accessed through the following link
+
+[🔗](https://iiha7-sees-502-interactive--interactive-educational-tool-6z3qae.streamlit.app/)
 
 # Contact Information
 
