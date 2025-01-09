@@ -110,9 +110,9 @@ with tab2:
         st.write("No energy consumption data available for the selected entity and year.")
 
 with tab3:
-   st.header("Calculate CO₂ Emissions Based on Energy Mix")
-
-   st.write("Enter your annual energy generation by source (in TWh):")
+    st.header("Calculate CO₂ Emissions Based on Energy Mix")
+      
+    st.write("Enter your annual energy generation by source (in TWh):")
     other_renewables = st.number_input("Other Renewables (e.g. geothermal, tidal, etc.)", min_value=0.0, step=0.1)
     biofuels = st.number_input("Biofuels", min_value=0.0, step=0.1)
     solar = st.number_input("Solar", min_value=0.0, step=0.1)
@@ -122,7 +122,7 @@ with tab3:
     gas = st.number_input("Gas", min_value=0.0, step=0.1)
     coal = st.number_input("Coal", min_value=0.0, step=0.1)
     oil = st.number_input("Oil", min_value=0.0, step=0.1)
-
+   
     # -------------------------------------------------------------------------
     # Emission Factors:
     # These are approximate lifecycle values in METRIC TONS of CO₂ per TWh.
@@ -139,7 +139,7 @@ with tab3:
         "Coal": 900_000,             # e.g., 900 g/kWh => 900,000 t/TWh
         "Oil": 750_000               # e.g., 750 g/kWh => 750,000 t/TWh
     }
-
+   
     # Calculate total emissions (in metric tons of CO₂)
     total_emissions = (
         other_renewables * emission_factors["Other Renewables"] +
@@ -152,7 +152,7 @@ with tab3:
         coal             * emission_factors["Coal"] +
         oil              * emission_factors["Oil"]
     )
-
+   
     # Display result
     st.markdown(
         f"""
