@@ -110,11 +110,10 @@ with tab2:
         st.write("No energy consumption data available for the selected entity and year.")
 
 with tab3:
-    st.header("Calculate CO₂ Emissions Based on Energy Mix")
+   st.header("Calculate CO₂ Emissions Based on Energy Mix")
 
-    # User input for energy mix (in TWh)
-    st.write("Enter your energy mix in TWh:")
-    other_renewables = st.number_input("Other Renewables (including geothermal and biomass)", min_value=0.0, step=0.1)
+   st.write("Enter your annual energy generation by source (in TWh):")
+    other_renewables = st.number_input("Other Renewables (e.g. geothermal, tidal, etc.)", min_value=0.0, step=0.1)
     biofuels = st.number_input("Biofuels", min_value=0.0, step=0.1)
     solar = st.number_input("Solar", min_value=0.0, step=0.1)
     wind = st.number_input("Wind", min_value=0.0, step=0.1)
@@ -124,35 +123,45 @@ with tab3:
     coal = st.number_input("Coal", min_value=0.0, step=0.1)
     oil = st.number_input("Oil", min_value=0.0, step=0.1)
 
-    # Emission factors (metric tons of CO₂ per TWh)
+    # -------------------------------------------------------------------------
+    # Emission Factors:
+    # These are approximate lifecycle values in METRIC TONS of CO₂ per TWh.
+    # (Derived from the more common g/kWh by multiplying by 1,000.)
+    # -------------------------------------------------------------------------
     emission_factors = {
-        "Other Renewables": 0,
-        "Biofuels": 0.01,
-        "Solar": 0,
-        "Wind": 0,
-        "Hydro": 0,
-        "Nuclear": 0,
-        "Gas": 490,
-        "Coal": 820,
-        "Oil": 640
+        "Other Renewables": 25_000,   # e.g., 25 g/kWh => 25,000 t/TWh
+        "Biofuels": 75_000,          # e.g., 75 g/kWh => 75,000 t/TWh
+        "Solar": 50_000,             # e.g., 50 g/kWh => 50,000 t/TWh
+        "Wind": 15_000,              # e.g., 15 g/kWh => 15,000 t/TWh
+        "Hydro": 5_000,              # e.g., 5 g/kWh => 5,000 t/TWh
+        "Nuclear": 12_000,           # e.g., 12 g/kWh => 12,000 t/TWh
+        "Gas": 450_000,              # e.g., 450 g/kWh => 450,000 t/TWh
+        "Coal": 900_000,             # e.g., 900 g/kWh => 900,000 t/TWh
+        "Oil": 750_000               # e.g., 750 g/kWh => 750,000 t/TWh
     }
 
+    # Calculate total emissions (in metric tons of CO₂)
     total_emissions = (
         other_renewables * emission_factors["Other Renewables"] +
-        biofuels * emission_factors["Biofuels"] +
-        solar * emission_factors["Solar"] +
-        wind * emission_factors["Wind"] +
-        hydro * emission_factors["Hydro"] +
-        nuclear * emission_factors["Nuclear"] +
-        gas * emission_factors["Gas"] +
-        coal * emission_factors["Coal"] +
-        oil * emission_factors["Oil"]
+        biofuels         * emission_factors["Biofuels"] +
+        solar            * emission_factors["Solar"] +
+        wind             * emission_factors["Wind"] +
+        hydro            * emission_factors["Hydro"] +
+        nuclear          * emission_factors["Nuclear"] +
+        gas              * emission_factors["Gas"] +
+        coal             * emission_factors["Coal"] +
+        oil              * emission_factors["Oil"]
     )
 
+    # Display result
     st.markdown(
-        f"""<div style="text-align: center; font-size: 24px; font-weight: bold; color: #E74C3C; margin-top: 20px;">
-        Total CO₂ Emissions from Your Energy Mix: {total_emissions:.2f} metric tons
-        </div>""", unsafe_allow_html=True
+        f"""
+        <div style="text-align: center; font-size: 24px; font-weight: bold; 
+                    color: #E74C3C; margin-top: 20px;">
+            Total CO₂ Emissions: {total_emissions:,.2f} metric tons per year
+        </div>
+        """,
+        unsafe_allow_html=True
     )
 
 with tab4:
