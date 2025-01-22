@@ -183,7 +183,7 @@ with tab4:
     st.markdown("<br>", unsafe_allow_html=True)
     
     # Styled GitHub Link
-    st.markdown("<a href='http://your-github-repository-link' target='_blank' style='font-size:18px; color:#bf5454;'>🔗 GitHub Repository</a>", unsafe_allow_html=True)
+    st.markdown("<a href='https://github.com/iiha7/SEES-502-Interactive-Educational-Tool' target='_blank' style='font-size:18px; color:#bf5454;'>🔗 GitHub Repository</a>", unsafe_allow_html=True)
 
     st.markdown("""
     I'm always happy to discuss the tool and any improvements or contributions you'd like to make.
